@@ -14,7 +14,7 @@ rag_agent = RAGAgent(retriever=vector_db)
 @app.route('/answer_query', methods=['POST'])
 def answer_query():
     """
-    Endpoint to search for similar texts based on a query.
+    Endpoint to answer user query on the games description dataset.
     Expects a JSON payload with {"query": "text to search"}
     """
     data = request.get_json()
@@ -30,5 +30,4 @@ def answer_query():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
-
+    app.run(host="0.0.0.0", port=5000, debug=False)

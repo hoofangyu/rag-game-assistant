@@ -47,7 +47,7 @@ class RAGAgent:
         Returns:
             str: The generated response from the language model.
         """
-        context_text = "\n\n".join(context[:self.max_context_length])
+        context_text = "\n\n".join(context[:self.max_context_length]) # Keeping the context size small
         
         prompt = f"""
         You are a knowledgeable assistant answering questions about video games. Use the context below to answer the user's question accurately and informatively.
