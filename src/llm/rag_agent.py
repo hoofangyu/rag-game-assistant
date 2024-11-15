@@ -6,7 +6,7 @@ from src.llm.topk_agent import get_number_of_results_from_query
 client = OpenAI(api_key = OPENAI_API_KEY)
 
 class RAGAgent:
-    def __init__(self, retriever, generator_model="gpt-4o-mini", max_context_length=20):
+    def __init__(self, retriever, generator_model="gpt-4o", max_context_length=20):
         """
         Initializes the RAG agent with a retriever and generator model.
         
