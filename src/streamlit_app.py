@@ -1,5 +1,9 @@
 import streamlit as st
 import requests
+import uuid
+
+if "session_id" not in st.session_state:
+    st.session_state["session_id"] = str(uuid.uuid4())
 
 # Streamlit app setup
 st.title("Game Query Assistant")
@@ -15,14 +19,16 @@ if st.button("Get Answer"):
         try:
             # Flask API URL (assuming the Flask API is running on localhost:5000)
             url = "http://localhost:5000/answer_query"
-            payload = {"query": query_text}
+            payload = {"query": query_text, "session_id": st.session_state["session_id"]}
             response = requests.post(url, json=payload)
 
             if response.status_code == 200:
                 result = response.json().get("result")
+                history = response.json().get("chat_memory")
                 st.write("Answer:", result)
+                st.write("History:", history)
             else:
-                st.error("Error from Flask API:", response.text)
+                st.error(f'"Error from Flask API:", {response.text}')
         except Exception as e:
             st.error(f"Error connecting to the API: {e}")
     else:

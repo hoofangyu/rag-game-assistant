@@ -6,14 +6,14 @@ from src.llm.topk_agent import get_number_of_results_from_query
 client = OpenAI(api_key = OPENAI_API_KEY)
 
 class RAGAgent:
-    def __init__(self, retriever, generator_model="gpt-4o", max_context_length=20):
+    def __init__(self, retriever, generator_model="gpt-4o-mini", max_context_length=20):
         """
         Initializes the RAG agent with a retriever and generator model.
         
         Args:
             vector_db (VectorDB): The vector database instance used to retrieve relevant game metadata.
             embedding_generator (EmbeddingGenerator): An instance of EmbeddingGenerator used to generate embeddings for the user query.
-            generator_model (str): The OpenAI model to use for generating responses (default is "gpt-4").
+            generator_model (str): The OpenAI model to use for generating responses (default is "gpt-4o-mini").
             max_context_length (int): The maximum number of context items (game metadata entries) to retrieve for generating responses.
         """
         self.vector_db = retriever
@@ -36,7 +36,7 @@ class RAGAgent:
         retrieved_metadata = self.vector_db.search(query_embedding, k=k)
         return retrieved_metadata
 
-    def generate_response(self, query, context):
+    def generate_response(self, query, context, history):
         """
         Generates a response to the user query using the provided context.
         
@@ -53,6 +53,9 @@ class RAGAgent:
         You are a knowledgeable assistant answering questions about video games. Use the context below to answer the user's question accurately and informatively.
         If you do not know the answer, do not use information outside of the context, just respond with you do not know. Sound natural in your answer as well!
         
+        Chat History:
+        {history}
+
         Context:
         {context_text}
         
@@ -71,7 +74,7 @@ class RAGAgent:
 
         return response.choices[0].message.content.strip()
 
-    def answer_query(self, query):
+    def answer_query(self, query, history = ""):
         """
         Combines retrieval and generation to answer the user's query.
         
@@ -82,6 +85,6 @@ class RAGAgent:
             str: The generated response to the user's question.
         """
         context = self.retrieve_context(query)
-        response = self.generate_response(query, context)
+        response = self.generate_response(query, context, history)
         
         return response
