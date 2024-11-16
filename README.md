@@ -1,5 +1,18 @@
 # razer-assessment
-This repository contains a Dockerized Flask API and Streamlit app designed for querying game descriptions. The system leverages a multi-agent pipeline for intelligent search and response, incorporating vector embeddings stored in FAISS for efficient metadata retrieval. The pipeline supports local and cloud deployment, with an option to extend functionality using AWS services like ECR and ECS.
+This repository contains a Dockerized Flask API and Streamlit app designed for a RAG based Game Assistant that addresses user queries about a game descriptions dataset. The system leverages a multi-agent pipeline for intelligent search and response, incorporating vector embeddings stored in FAISS for efficient metadata retrieval. The pipeline supports local and cloud deployment, with an option to extend functionality using AWS services like ECR and ECS.
+
+# API Endpoint Usage
+- Base URL: `<your_ip>:5000/answer_query`
+- Request Format: Send a JSON payload with the following structure:
+```json
+{
+   "query":"your query",
+   "session_id":"your session id"
+}
+```
+# Demo Solution (Hosted on AWS ECS)
+- API Endpoint: http://34.207.66.130:5000/answer_query
+- Streamlit App: http://54.236.8.185:8501/
 
 # Set Up
 ## Installation
