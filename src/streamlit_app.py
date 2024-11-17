@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import uuid
 
-ip = "34.207.66.130"
+ip = "localhost"
 
 if "session_id" not in st.session_state:
     st.session_state["session_id"] = str(uuid.uuid4())
