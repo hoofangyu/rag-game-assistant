@@ -10,9 +10,9 @@ This repository contains a Dockerized Flask API and Streamlit app designed for a
    "session_id":"your session id"
 }
 ```
-# Demo Solution (Hosted on AWS ECS) - Currently Terminated
-- API Endpoint: http://34.207.66.130:5000/answer_query
-- Streamlit App: http://54.236.8.185:8501/
+# Demo Solution (Hosted on AWS ECS) - ACTIVE
+- API Endpoint: http://44.222.108.94:5000/answer_query
+- Streamlit App: http://44.200.169.240:8501/
 
 # Set Up
 ## Installation
