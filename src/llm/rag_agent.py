@@ -32,7 +32,7 @@ class RAGAgent:
             list of str: A list of relevant metadata strings.
         """
         query_embedding = self.embedding_generator.get_embedding(query)
-        k = get_number_of_results_from_query(query) + 2 # Give additional buffer
+        k = get_number_of_results_from_query(query)
         retrieved_metadata = self.vector_db.search(query_embedding, k=k)
         return retrieved_metadata
 

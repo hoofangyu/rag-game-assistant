@@ -37,7 +37,7 @@ def get_number_of_results_from_query(query, default_k=5):
     print(output)
 
     try:
-        k = int(output.strip())
+        k = int(output.strip()) + 2 # for buffer
     except ValueError:
         k = default_k
 
