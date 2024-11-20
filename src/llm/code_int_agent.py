@@ -1,7 +1,7 @@
 from openai import OpenAI
 from src.utils import OPENAI_API_KEY
 from src.embeddings import EmbeddingGenerator
-from src.llm.topk_agent import get_number_of_results_from_query
+from src.llm.routing_agents import get_number_of_results_from_query
 
 client = OpenAI(api_key = OPENAI_API_KEY)
 
