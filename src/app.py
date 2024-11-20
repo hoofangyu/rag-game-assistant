@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from src.embeddings import EmbeddingGenerator,VectorDB
-from src.llm import RAGAgent
+from src.llm import RAGPipeline
 from src.utils import ChatMemory
 import numpy as np
 
@@ -9,7 +9,7 @@ vector_db = VectorDB()
 vector_db.load_index()
 
 embedding_generator = EmbeddingGenerator()
-rag_agent = RAGAgent(retriever=vector_db)
+rag_pipeline = RAGPipeline(retriever=vector_db)
 
 chat_memory = ChatMemory()
 
@@ -35,7 +35,7 @@ def answer_query():
     chat_history = "\n".join([f"User: {entry['user']}\nBot: {entry['bot']}" for entry in conversation_history])
         
     try:
-        result = rag_agent.answer_query(query_text, history=chat_history)
+        result = rag_pipeline.answer_query(query_text, history=chat_history)
         chat_memory.update_memory(session_id, query_text, result)
         return jsonify({"result":result, "chat_memory":chat_memory.get_memory(session_id)})
 

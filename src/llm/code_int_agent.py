@@ -41,7 +41,7 @@ class CodeAgent:
 
         self.thread = client.beta.threads.create()
 
-    def generate_response(self, query, history):
+    def generate_response(self, query):
         """
         Generates a response to the user query using the provided context.
         
@@ -84,7 +84,7 @@ class CodeAgent:
 
         return messages.data[0].content[0].text.value
 
-    def answer_query(self, query, history = ""):
+    def answer_query(self, query):
         """
         Combines retrieval and generation to answer the user's query.
         
@@ -94,6 +94,6 @@ class CodeAgent:
         Returns:
             str: The generated response to the user's question.
         """
-        response = self.generate_response(query, history)
+        response = self.generate_response(query)
         
         return response

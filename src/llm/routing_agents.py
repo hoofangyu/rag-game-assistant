@@ -69,7 +69,6 @@ def requires_code_intepretor(query):
     """
 
     output = prompt_sync(prompt)
-    print(output)
     k = int(output.split(",")[0])
 
     return k
