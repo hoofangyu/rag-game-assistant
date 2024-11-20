@@ -36,7 +36,7 @@ pip install -r requirements.txt
 5. (Optional) Create new files for VectorDB
 - Pre-existing files already in repository for the dataset from kaggle, run this only if you have a new `games_description.csv` file
 ```bash
-python -m src.scripts.generate_embeddings --descriptions-path /path/to/games_description.csv --ranking-path /path/to/games_ranking.csv
+python -m src.scripts.generate_embeddings --descriptions-path /path/to/games_description.csv
 ```
 6. Build the Docker Image
 ```bash
