@@ -10,7 +10,7 @@ This repository contains a Dockerized Flask API and Streamlit app designed for a
    "session_id":"your session id"
 }
 ```
-# Demo Solution (Hosted on AWS ECS) - ACTIVE
+# Demo Solution (Hosted on AWS ECS) - INACTIVE
 - API Endpoint: http://44.222.108.94:5000/answer_query
 - Streamlit App: http://44.200.169.240:8501/
 
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 5. (Optional) Create new files for VectorDB
 - Pre-existing files already in repository for the dataset from kaggle, run this only if you have a new `games_description.csv` file
 ```bash
-python -m src.scripts.generate_embeddings --file-path /path/to/games_description.csv
+python -m src.scripts.generate_embeddings --descriptions-path /path/to/games_description.csv --ranking-path /path/to/games_ranking.csv
 ```
 6. Build the Docker Image
 ```bash

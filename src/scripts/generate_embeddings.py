@@ -1,9 +1,9 @@
 from src.embeddings import DescriptionParser, EmbeddingGenerator, VectorDB
 import argparse
 
-def main(file_path):
+def main(file_path, ranking_path):
     vector_db = VectorDB()
-    description_parser = DescriptionParser(file_path)
+    description_parser = DescriptionParser(file_path, ranking_path)
     embedding_generator = EmbeddingGenerator()
 
     print("Parsing games description")
@@ -19,10 +19,16 @@ def main(file_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a vector database from a games description CSV file.")
     parser.add_argument(
-        "--file-path",
+        "--descriptions-path",
+        type=str,
+        required=True,
+        help="Path to the games_description.csv file."
+    )
+    parser.add_argument(
+        "--ranking-path",
         type=str,
         required=True,
         help="Path to the games_description.csv file."
     )
     args = parser.parse_args()
-    main(args.file_path)
+    main(args.descriptions_path, args.ranking_path)

@@ -4,6 +4,7 @@ __pycache__/
 
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+*.ipynb
 
 # config.py
 **/config.py
