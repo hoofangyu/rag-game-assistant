@@ -95,36 +95,7 @@ streamlit run src/streamlit_app.py
 
 # Pipeline Overview
 
-## **Preprocessing: Game Metadata and Embedding Generation**
-
-1. **Parse Game Metadata**  
-   - For each row in `game_descriptions_csv`:
-     - Convert the row data into a **formatted string** representing the game metadata (e.g., title, genre, description, etc.).
-
-2. **Generate Vector Embeddings**  
-   - Use a suitable embedding model to create vector embeddings for the formatted metadata.
-
-3. **Store in Vector Database**  
-   - Save the vector embeddings in **FAISS** (or another vector database) along with the game metadata for efficient retrieval.
-
----
-
-## **Query Handling: Multi-Agent Pipeline**
-
-### **Agent 1: Determine `k` (Number of Results)**
-
-- Use `gpt-4o-mini` to determine the number of results (`k`) the user wants:
-  - If the user specifies the number of results, use that value.
-  - If no value is specified, set the default: `k = 5`.
-
-### **Retrieve Most Similar Game Metadata**
-
-- Extract the top `k + 2` most similar embeddings from the FAISS vector database (buffering with 2 additional results for diversity).
-
-### **Agent 2: Query Answering**
-
-- Pass the retrieved game metadata as part of the **context** to `gpt-4o`, the main query-answering agent.
-- Generate a response based on the user's query and the retrieved game metadata.
+![RAG Pipeline](./images/rag_pipeline.png)
 
 ---
 
