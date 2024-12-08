@@ -1,4 +1,4 @@
-# razer-assessment
+# game assistant
 This repository contains a Dockerized Flask API and Streamlit app designed for a RAG based Game Assistant that addresses user queries about a game descriptions dataset. The system leverages a multi-agent pipeline for intelligent search and response, incorporating vector embeddings stored in FAISS for efficient metadata retrieval. The pipeline supports local and cloud deployment, with an option to extend functionality using AWS services like ECR and ECS.
 
 # API Endpoint Usage
